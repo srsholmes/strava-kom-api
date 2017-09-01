@@ -29,6 +29,9 @@ const hello = async (event, context, callback) => {
   const { access_token, athlete } = await post('https://www.strava.com/oauth/token', { ...auth_payload, code });
   const response = {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*' // Required for CORS support to work
+    },
     body: JSON.stringify({
       athlete,
       access_token,
