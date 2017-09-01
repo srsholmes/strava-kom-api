@@ -1,0 +1,35 @@
+{
+  "name": "strava-kom-api",
+  "version": "1.0.0",
+  "description": "Strava API to collate KOM information",
+  "scripts": {
+    "start": "npm run watch & npm run offline",
+    "watch": "babel --watch=./src --out-dir=./lib",
+    "build": "babel src -d lib",
+    "offline": "serverless offline start",
+    "test": "TEST=environment nyc --check-coverage --lines 100 --functions 100 --branches 100 node ./test/harness ./test/{,**/}*.spec.js && npm run report"
+  },
+  "dependencies": {
+    "superagent": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-register": "^6.9.0",
+    "glob": "^7.1.1",
+    "nyc": "10.2.0",
+    "sinon": "^3.2.1",
+    "tape": "^4.6.0",
+    "serverless-offline": "^3.15.3"
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ]
+  },
+  "author": "Simon Holmes",
+  "license": "ISC"
+}
