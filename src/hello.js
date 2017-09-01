@@ -26,13 +26,13 @@ const hello = async (event, context, callback) => {
     client_secret: CLIENT_SECRET,
   };
 
-  const { athlete, access_token } = await post('https://www.strava.com/oauth/token', { ...auth_payload, code });
+  const { access_token } = await post('https://www.strava.com/oauth/token', { ...auth_payload, code });
   const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      athlete,
-      access_token,
-    }),
+    statusCode: 302,
+    headers: {
+      Location: 'http://localhost:8080/#/my-runs',
+      'Set-Cookie': `ac=${access_token};`
+    },
   };
   callback(null, response);
 };
