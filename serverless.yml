@@ -9,11 +9,11 @@ provider:
 plugins:
   - serverless-offline
 functions:
-  hello:
-    handler: lib/index.hello
+  login:
+    handler: lib/index.login
     events:
       - http:
-          path: hello
+          path: login
           method: get
           cors: true
 

@@ -8,3 +8,4 @@ lib
 
 # Serverless directories
 .serverless
+.nyc_output

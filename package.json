@@ -4,6 +4,7 @@
   "description": "Strava API to collate KOM information",
   "scripts": {
     "start": "npm run watch & npm run offline",
+    "deploy": "serverless deploy",
     "watch": "babel --watch=./src --out-dir=./lib",
     "build": "babel src -d lib",
     "offline": "serverless offline start",

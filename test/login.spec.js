@@ -1,12 +1,14 @@
 import test from 'tape';
 import sinon from 'sinon';
-import { hello } from '../src';
+import { login } from '../src';
 
-test('hello', t => {
+
+//TODO: Fix tests
+test('login', t => {
   t.plan(1);
   const event = { event: 'event' };
   const a = { hello: 'world', };
-  const b = { world: 'hello', };
+  const b = { world: 'login', };
   const spy = sinon.spy();
 
   const expected = {
@@ -18,6 +20,6 @@ test('hello', t => {
     }),
   };
 
-  hello(event, null, spy);
+  login(event, null, spy);
   t.ok(spy.calledWith(null, expected), 'The function should return the spy with the expected result');
 });

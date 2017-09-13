@@ -17,7 +17,7 @@ const post = (url, payload, transform = x => x) => {
   });
 };
 
-const hello = async (event, context, callback) => {
+const login = async (event, context, callback) => {
   const { queryStringParameters: { code } } = event;
   const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
@@ -29,9 +29,7 @@ const hello = async (event, context, callback) => {
   const { access_token, athlete } = await post('https://www.strava.com/oauth/token', { ...auth_payload, code });
   const response = {
     statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*' // Required for CORS support to work
-    },
+    headers: { 'Access-Control-Allow-Origin': '*' },
     body: JSON.stringify({
       athlete,
       access_token,
@@ -40,4 +38,4 @@ const hello = async (event, context, callback) => {
   callback(null, response);
 };
 
-export default hello;
+export default login;
